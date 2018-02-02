@@ -1,0 +1,15 @@
+<% include partials/header.ejs %>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <h3 class="card-header"><%= title %></h3>
+      <div class="card-body">
+        <p><%= message %></p>
+        <a class="btn btn-primary" href="<%= button.url %>" role="button"><%= button.title %></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include partials/footer.ejs %>

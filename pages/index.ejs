@@ -1,0 +1,35 @@
+<% include partials/header.ejs %>
+
+  <div class="jumbotron">
+    <h1>Twitter Account Activity Dashboard</h1>
+    <p>A sample application to demonstrate webhook and subscription management.
+    This app uses the Standard All Events version of the Account Activity API.
+    Full API reference can be found on developers.twitter.com
+    <a href="https://developer.twitter.com/en/docs/accounts-and-users/subscribe-account-activity/api-reference/aaa-standard-all" target="_blank">here</a>.</p>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <h5>Production Considerations</h5>
+          <p>This app is for demonstration purposes only and should not be used in
+          production without further modifcations. Dependencies on databases, and other
+          types of services are purposley not within the scope of this app.
+          Some considerations below:</p>
+          <ul>
+            <li>User information is stored in server side sessions. This may not provide
+            the best user experience or be the best solution for your usecase, espcially
+            if you are adding more functionality.</li>
+            <li>The application can handle light usage, but you may experience API rate
+            limit issues under heavier usage. Consider storing data locally in a secure database
+            or caching requests.</li>
+            <li>Specifc pages are only protected by basic auth. To support multiple users 
+            (admins, team members, customers, etc) consider implementing a form of ACL.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</div>
+<% include partials/footer.ejs %>
+

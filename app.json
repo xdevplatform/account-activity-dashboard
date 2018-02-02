@@ -1,0 +1,8 @@
+{
+  "name": "account-activity-dashboard",
+  "description": "Sample web app and helper scripts to get started with Standard Account Activity API (All Activities). Written in Node.js.",
+  "repository": "",
+  "logo": "",
+  "keywords": ["node", "express", "api", "webhook"],
+  "image": ""
+}

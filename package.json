@@ -1,0 +1,37 @@
+{
+  "name": "twitter-webhook-boilerplate-node",
+  "version": "0.2.5",
+  "description": "",
+  "engines": {
+    "node": "5.9.1"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "command-line-args": "^5.0.1",
+    "ejs": "^2.5.7",
+    "express": "4.13.3",
+    "express-session": "^1.15.6",
+    "memory-cache": "^0.2.0",
+    "nconf": "^0.8.4",
+    "passport": "^0.4.0",
+    "passport-twitter": "^1.0.4",
+    "prompt-promise": "^1.0.3",
+    "query-string": "^5.0.1",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}

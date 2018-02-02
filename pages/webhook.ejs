@@ -1,0 +1,73 @@
+<% include partials/header.ejs %>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <h3 class="card-header">Manage Webhook</h3>
+      <div class="card-body">
+
+        <!-- Webhook Config Info -->
+        <% if (configs.length) { %>
+        <p><strong>ID:</strong> <%= configs[0].id %><br/>
+        <strong>URL:</strong> <%= configs[0].url %><br/>
+        <strong>Valid:</strong> <%= configs[0].valid %><br/>
+        <strong>Date Created:</strong> <%= configs[0].created_timestamp %></p>
+        <% } else { %>
+        No webhook config registered. Register one below.
+        <% } %>
+        <hr/>
+
+        <!-- Update Config -->
+        <h5>Create or Update Webhook</h5>
+        <form method="post" action="/webhook/update">
+          <div class="form-group mx-sm-6 mb-2">
+            <input name="url" type="text" class="form-control" placeholder="https://your/secure/webhook/url">
+          </div>
+          <% if (configs.length) { %>
+          <input name="webhook_id" type="hidden" class="form-control" value="<%= configs[0].id %>">
+          <p>Your current webhook config will be deleted before creating a new one. If the new
+          webhook config is not valid, you may experience some down time until you can resolve it.</p>
+          <% } %>
+          <button id="update-btn" type="submit" class="btn btn-primary">Create/Update</button>
+        </form>
+
+        <!-- Validate Config -->
+        <% if (configs.length) { %>
+        <hr/>
+        <h5>Validate Webhook</h5>
+        <p>Trigger a challenge request from the Twitter webhook server to your
+        reigistered webhook URL. Helpful if you need to manualy trigger validation.</p>
+        <form method="post" action="/webhook/validate">
+          <input name="webhook_id" type="hidden" class="form-control" value="<%= configs[0].id %>">
+          <button id="delete-btn" type="submit" class="btn btn-warning">Validate</button>
+        </form>
+        <% } %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if (configs.length) { %>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <h3 class="card-header">Danger Zone</h3>
+      <div class="card-body">
+
+        <!-- Delete Config -->
+        <h5>Delete Webhook</h5>
+        <p>By deleting your webhook, you will no longer receive Account Activity events
+        for all users your webhook is subscribed to. Proceed with caution.</p>
+        <form method="delete" action="/webhook/delete">
+          <input name="webhook_id" type="hidden" class="form-control" value="<%= configs[0].id %>">
+          <button id="delete-btn" type="submit" class="btn btn-danger">Delete</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+<% } %>
+
+<% include partials/footer.ejs %>
