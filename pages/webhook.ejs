@@ -20,14 +20,23 @@
         <!-- Update Config -->
         <h5>Create or Update Webhook</h5>
         <form method="post" action="/webhook/update">
-          <div class="form-group mx-sm-6 mb-2">
-            <input name="url" type="text" class="form-control" placeholder="https://your/secure/webhook/url">
-          </div>
+          
+          <!-- if config exists -->
           <% if (configs.length) { %>
+          <div class="form-group mx-sm-6 mb-2">
+            <input name="url" type="text" class="form-control" value="<%= configs[0].url %>">
+          </div>
           <input name="webhook_id" type="hidden" class="form-control" value="<%= configs[0].id %>">
           <p>Your current webhook config will be deleted before creating a new one. If the new
           webhook config is not valid, you may experience some down time until you can resolve it.</p>
+
+          <!-- if no config exists -->
+          <% } else { %>
+          <div class="form-group mx-sm-6 mb-2">
+            <input name="url" type="text" class="form-control" placeholder="https://your/secure/webhook/url">
+          </div>
           <% } %>
+
           <button id="update-btn" type="submit" class="btn btn-primary">Create/Update</button>
         </form>
 
