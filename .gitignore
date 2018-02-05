@@ -57,3 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
+# OSX file
+.DS_Store
+
+# Project files
+config.json
