@@ -93,6 +93,7 @@ var webhook_view = require('./views/webhook')
 app.get('/webhook', cacheRoute(1000), webhook_view.get_config)
 app.post('/webhook/update', webhook_view.update_config)
 app.post('/webhook/validate', webhook_view.validate_config)
+app.post('/webhook/delete', webhook_view.delete_config)
 
 
 /**

@@ -68,15 +68,35 @@
         <h5>Delete Webhook</h5>
         <p>By deleting your webhook, you will no longer receive Account Activity events
         for all users your webhook is subscribed to. Proceed with caution.</p>
-        <form method="delete" action="/webhook/delete">
+        <button id="delete-btn" type="submit" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal">Delete</button>
+    </div>
+  </div>
+</div>
+
+<div id="delete-modal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-white bg-danger">
+        <h5 class="modal-title">Are you sure?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>By deleting your webhook, you will no longer receive Account Activity events
+        for all users your webhook is subscribed to. Proceed with caution.</p>
+      </div>
+      <div class="modal-footer">
+        <form method="post" action="/webhook/delete">
           <input name="webhook_id" type="hidden" class="form-control" value="<%= configs[0].id %>">
           <button id="delete-btn" type="submit" class="btn btn-danger">Delete</button>
         </form>
-
+        <button id="cancel-btn" type="submit" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       </div>
     </div>
   </div>
 </div>
+
 <% } %>
 
 <% include partials/footer.ejs %>

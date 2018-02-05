@@ -150,6 +150,44 @@ webhook.update_config = function (req, resp) {
 
 
 /**
+ * Deletes existing webhook config
+ */
+webhook.delete_config = function (req, resp) {
+
+  // delete webhook config
+  delete_webhook(req.body.webhook_id)
+
+  // render success response
+  .then(function (body) {
+    var json_response = {
+      title: 'Success',
+      message: 'Webhook successfully deleted.',
+      button: {
+        title: 'Ok',
+        url: '/webhook'
+      }
+    }
+
+    resp.render('status', json_response)
+  })
+
+  // render error response
+  .catch(function () {
+    var json_response = {
+      title: 'Error',
+      message: 'Webhook was not deleted.',
+      button: {
+        title: 'Ok',
+        url: '/webhook'
+      }
+    }
+
+    resp.render('status', json_response) 
+  })
+}
+
+
+/**
  * Helper function that deletes the webhook config.
  * Returns a promise.
  */
