@@ -1,4 +1,5 @@
 const request = require('request-promise')
+var csurf = require('csurf')
 const auth = require('../auth.js')
 
 
@@ -18,6 +19,7 @@ webhook.get_config = function (req, resp) {
   .then(function (body) {
     var json_response = {
       configs: JSON.parse(body),
+      csrf_token: req.csrfToken(),
       update_webhook_url: 'https://' + req.headers.host + '/webhook/twitter'
     }
 

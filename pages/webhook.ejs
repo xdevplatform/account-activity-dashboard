@@ -37,6 +37,7 @@
           </div>
           <% } %>
 
+          <input type="hidden" name="_csrf" value="<%= csrf_token %>">
           <button id="update-btn" type="submit" class="btn btn-primary">Create/Update</button>
         </form>
 
@@ -47,6 +48,7 @@
         <p>Trigger a challenge request from the Twitter webhook server to your
         reigistered webhook URL. Helpful if you need to manualy trigger validation.</p>
         <form method="post" action="/webhook/validate">
+          <input type="hidden" name="_csrf" value="<%= csrf_token %>">
           <input name="webhook_id" type="hidden" class="form-control" value="<%= configs[0].id %>">
           <button id="delete-btn" type="submit" class="btn btn-warning">Validate</button>
         </form>
@@ -77,17 +79,18 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-white bg-danger">
-        <h5 class="modal-title">Are you sure?</h5>
+        <h5 class="modal-title">Caution</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>By deleting your webhook, you will no longer receive Account Activity events
+        <p>Are you sure you want to delete your webhook config? You will no longer receive Account Activity events
         for all users your webhook is subscribed to. Proceed with caution.</p>
       </div>
       <div class="modal-footer">
         <form method="post" action="/webhook/delete">
+          <input type="hidden" name="_csrf" value="<%= csrf_token %>">
           <input name="webhook_id" type="hidden" class="form-control" value="<%= configs[0].id %>">
           <button id="delete-btn" type="submit" class="btn btn-danger">Delete</button>
         </form>
