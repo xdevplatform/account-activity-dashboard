@@ -6,6 +6,9 @@ const auth = require('../auth.js')
 var webhook = {}
 
 
+/**
+ * Retrieves existing webhoo config and renders
+ */
 webhook.get_config = function (req, resp) {
   // construct request to retreive webhook config
   var request_options = {
@@ -32,9 +35,21 @@ webhook.get_config = function (req, resp) {
   })
 
   // failure
-  .catch(function () {
+  .catch(function (body) {
+    if (body) {
+      console.log(body)
+    }
+    var json_response = {
+      title: 'Error',
+      message: 'Webhook config unable to be retrieved',
+      button: {
+        title: 'Ok',
+        url: '/webhook'
+      }
+    }
+
     resp.status(500);
-    resp.send('Error: Webhook config unable to be retrieved.')
+    resp.render('status', json_response)
   })
 }
 

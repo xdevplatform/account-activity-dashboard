@@ -3,5 +3,7 @@
   "TWITTER_CONSUMER_SECRET": "your-consumer-secret",
   "TWITTER_ACCESS_TOKEN": "your-access-token",
   "TWITTER_ACCESS_TOKEN_SECRET": "your-access-token-secret",
-  "TWITTER_WEBHOOK_ENV": "your-webhook-environment"
+  "TWITTER_WEBHOOK_ENV": "env-beta",
+  "BASIC_AUTH_USER": "admin",
+  "BASIC_AUTH_PASSWORD": "bluebird"
 }

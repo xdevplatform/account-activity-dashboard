@@ -3,7 +3,6 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const passport = require('passport')
 const TwitterStrategy = require('passport-twitter')
-const csrf = require('csurf')
 const security = require('./security')
 const auth = require('./auth')
 const cacheRoute = require('./cache-route')
@@ -25,6 +24,7 @@ app.use(session({
   saveUninitialized: true
 }))
 
+// start server
 const server = app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'))
 })
@@ -32,9 +32,9 @@ const server = app.listen(app.get('port'), function() {
 // initialize socket.io
 socket.init(server)
 
-// csrf protection middleware
-var csrfProtection = csrf()
+// form parser middleware
 var parseForm = bodyParser.urlencoded({ extended: false })
+
 
 /**
  * Receives challenge response check (CRC)
@@ -103,10 +103,10 @@ app.get('/subscriptions/remove', passport.authenticate('twitter', {
  * Webhook management routes
  **/
 var webhook_view = require('./views/webhook')
-app.get('/webhook', csrfProtection, cacheRoute(1000), webhook_view.get_config)
-app.post('/webhook/update', parseForm, csrfProtection, webhook_view.update_config)
-app.post('/webhook/validate', parseForm, csrfProtection, webhook_view.validate_config)
-app.post('/webhook/delete', parseForm, csrfProtection, webhook_view.delete_config)
+app.get('/webhook', auth.basic, auth.csrf, webhook_view.get_config)
+app.post('/webhook/update', parseForm, auth.csrf, webhook_view.update_config)
+app.post('/webhook/validate', parseForm, auth.csrf, webhook_view.validate_config)
+app.post('/webhook/delete', parseForm, auth.csrf, webhook_view.delete_config)
 
 
 /**

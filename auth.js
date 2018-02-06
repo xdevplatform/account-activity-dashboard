@@ -3,12 +3,14 @@ const request = require('request')
 const queryString = require('query-string')
 const passport = require('passport')
 const TwitterStrategy = require('passport-twitter')
+const httpAuth = require('http-auth')
 
 // load config
 nconf.file({ file: 'config.json' }).env()
 
-
 var auth = {}
+
+// twitter info
 auth.twitter_oauth = {
   consumer_key: nconf.get('TWITTER_CONSUMER_KEY'),
   consumer_secret: nconf.get('TWITTER_CONSUMER_SECRET'),
@@ -18,13 +20,19 @@ auth.twitter_oauth = {
 auth.twitter_webhook_environment = nconf.get('TWITTER_WEBHOOK_ENV')
 
 
+// basic auth middleware for express
+auth.basic = httpAuth.connect(httpAuth.basic({
+    realm: 'admin-dashboard'
+}, function(username, password, callback) {
+    callback(username == nconf.get('BASIC_AUTH_USER') && password == nconf.get('BASIC_AUTH_PASSWORD'))
+}))
+
+
+// csrf protection middleware for express
+auth.csrf = require('csurf')()
+
+
 // Configure the Twitter strategy for use by Passport.
-//
-// OAuth 1.0-based strategies require a `verify` function which receives the
-// credentials (`token` and `tokenSecret`) for accessing the Twitter API on the
-// user's behalf, along with the user's profile.  The function must invoke `cb`
-// with a user object, which will be set at `req.user` in route handlers after
-// authentication.
 passport.use(new TwitterStrategy({
     consumerKey: auth.twitter_oauth.consumer_key,
     consumerSecret: auth.twitter_oauth.consumer_secret,
@@ -42,16 +50,7 @@ passport.use(new TwitterStrategy({
   }
 ))
 
-
 // Configure Passport authenticated session persistence.
-//
-// In order to restore authentication state across HTTP requests, Passport needs
-// to serialize users into and deserialize users out of the session.  In a
-// production-quality application, this would typically be as simple as
-// supplying the user ID when serializing, and querying the user record by ID
-// from the database when deserializing.  However, due to the fact that this
-// example does not have a database, the complete Twitter profile is serialized
-// and deserialized.
 passport.serializeUser(function(user, cb) {
   cb(null, user);
 })
