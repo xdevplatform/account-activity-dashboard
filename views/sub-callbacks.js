@@ -38,6 +38,7 @@ module.exports = function (req, resp) {
       }
       resp.render('status', json_response)
     }).catch(function (response) {
+      console.log(response)
       var json_response = {
         title: 'Error',
         message: 'Subscriptions unable to be modifed.',
@@ -46,7 +47,10 @@ module.exports = function (req, resp) {
           url: '/subscriptions'
         }
       }
-      resp.sattus(500)
+      if (response.error) {
+        json_response.message = JSON.parse(response.error).errors[0].message
+      }
+      resp.status(500)
       resp.render('status', json_response)
     })
   } else {
