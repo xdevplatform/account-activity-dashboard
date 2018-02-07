@@ -19,7 +19,7 @@
 
         <!-- Update Config -->
         <h5>Create or Update Webhook</h5>
-        <form method="post" action="/webhook/update">
+        <form id="update-form" method="post" action="/webhook/update">
           
           <!-- if config exists -->
           <% if (configs.length) { %>
@@ -38,39 +38,49 @@
           <% } %>
 
           <input type="hidden" name="_csrf" value="<%= csrf_token %>">
-          <button id="update-btn" type="submit" class="btn btn-primary"><i class="fas fa-edit"></i> Create/Update</button>
         </form>
-
-        <!-- Validate Config -->
-        <% if (configs.length) { %>
-        <hr/>
-        <h5>Validate Webhook</h5>
-        <p>Trigger a challenge request from the Twitter webhook server to your
-        reigistered webhook URL. Helpful if you need to manualy trigger validation.</p>
-        <form method="post" action="/webhook/validate">
-          <input type="hidden" name="_csrf" value="<%= csrf_token %>">
-          <input name="webhook_id" type="hidden" class="form-control" value="<%= configs[0].id %>">
-          <button id="delete-btn" type="submit" class="btn btn-warning"><i class="fas fa-check"></i> Validate</button>
-        </form>
-        <% } %>
-
+      </div>
+      <div class="card-footer">
+        <button id="update-btn" type="submit" form="update-form" class="btn btn-primary"><i class="fas fa-edit"></i> Create/Update</button>
       </div>
     </div>
   </div>
 </div>
 
 <% if (configs.length) { %>
+
+<!-- Validate Config -->
 <div class="row">
   <div class="col-sm-12">
     <div class="card">
-      <h3 class="card-header"><i class="fas fa-exclamation-triangle"></i> Danger Zone</h3>
+      <h3 class="card-header"><i class="fas fa-check"></i> Validate Webhook</h3>
       <div class="card-body">
+        <p>Trigger a challenge request from the Twitter webhook server to your
+        reigistered webhook URL. Helpful if you need to manualy trigger validation to re-enable your webhook.</p>
+        <form id="validate-form" method="post" action="/webhook/validate">
+          <input type="hidden" name="_csrf" value="<%= csrf_token %>">
+          <input name="webhook_id" type="hidden" class="form-control" value="<%= configs[0].id %>">
+        </form>
+      </div>
+      <div class="card-footer">
+        <button id="delete-btn" type="submit" form="validate-form" class="btn btn-warning"><i class="fas fa-check"></i> Validate</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <!-- Delete Config -->
-        <h5>Delete Webhook</h5>
+<!-- Delete Config -->
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <h3 class="card-header"><i class="fas fa-exclamation-triangle"></i> Delete Webhook</h3>
+      <div class="card-body">
         <p>By deleting your webhook, you will no longer receive Account Activity events
         for all users your webhook is subscribed to. Proceed with caution.</p>
+      </div>
+      <div class="card-footer">
         <button id="delete-btn" type="submit" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal"><i class="fas fa-trash-alt"></i> Delete</button>
+      </div>
     </div>
   </div>
 </div>
