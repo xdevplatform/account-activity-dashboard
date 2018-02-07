@@ -2,7 +2,6 @@ const socketIO = require('socket.io')
 const http = require('http')
 
 
-var io
 var socket = {}
 
 

@@ -1,6 +1,7 @@
 const request = require('request-promise')
-const auth = require('../auth.js')
 const passport = require('passport')
+const auth = require('../helpers/auth.js')
+
 
 var sub_request_options = {
   url: 'https://api.twitter.com/1.1/account_activity/all/' + auth.twitter_webhook_environment + '/subscriptions.json',

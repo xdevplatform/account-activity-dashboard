@@ -1,4 +1,5 @@
-var mcache = require('memory-cache')
+const mcache = require('memory-cache')
+
 
 /**
  * Express.js middleware to cache route

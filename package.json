@@ -1,6 +1,6 @@
 {
   "name": "twitter-webhook-boilerplate-node",
-  "version": "0.2.5",
+  "version": "1.0.0",
   "description": "",
   "engines": {
     "node": "5.9.1"
@@ -10,7 +10,6 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "basic-auth": "^2.0.0",
     "body-parser": "^1.16.1",
     "command-line-args": "^5.0.1",
     "csurf": "^1.9.0",
@@ -31,12 +30,13 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/twitterdev/account-activity-dashboard"
   },
   "keywords": [
     "node",
     "heroku",
-    "express"
+    "express",
+    "webhook"
   ],
   "license": "MIT"
 }

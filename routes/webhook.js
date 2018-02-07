@@ -1,6 +1,5 @@
 const request = require('request-promise')
-var csurf = require('csurf')
-const auth = require('../auth.js')
+const auth = require('../helpers/auth.js')
 
 
 var webhook = {}
