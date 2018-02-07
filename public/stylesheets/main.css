@@ -39,3 +39,7 @@ nav, .jumbotron, .card {
 .icon-btn {
   cursor: pointer;
 }
+
+#home-menu li {
+  list-style: none;
+}

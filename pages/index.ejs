@@ -6,13 +6,28 @@
     This app uses the Standard All Events version of the Account Activity API.
     Full API reference can be found on developers.twitter.com
     <a href="https://developer.twitter.com/en/docs/accounts-and-users/subscribe-account-activity/api-reference/aaa-standard-all" target="_blank">here</a>.</p>
+    <hr>
+    <ul id="home-menu">
+      <li>
+        <a href="/webhook"><h5><i class="fas fa-cog"></i> Manage Webhook</h5></a>
+        <p>Create, update, delete and validate webhook configurations.</p>
+      </li>
+      <li>
+        <a href="/subscriptions"><h5><i class="fas fa-address-book"></i> Manage Subscriptions</h5></a>
+        <p>Add and remove Twitter user subscriptions.</p>
+      </li>
+      <li>
+        <a href="/activity"><h5><i class="fas fa-bolt"></i> Live Activity</h5></a>
+        <p>View live incoming Account Activity events for all users subscribed to.</p>
+      </li>
+    </ul>
   </div>
 
   <div class="row">
     <div class="col-sm-12">
       <div class="card">
+        <h5 class="card-header">Production Considerations</h5>
         <div class="card-body">
-          <h5>Production Considerations</h5>
           <p>This app is for demonstration purposes only and should not be used in
           production without further modifcations. Dependencies on databases, and other
           types of services are purposley not within the scope of this app.
