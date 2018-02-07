@@ -45,7 +45,7 @@ Sample web app and helper scripts to get started with Standard Account Activity 
 	Take note of your webhook URL. For example:
 	
 	```
-	https://your.app.domain/webhooks/twitter
+	https://your.app.domain/webhook/twitter
 	```
 	
 ## Configure webhook to receive events
@@ -55,13 +55,13 @@ To configure your webhook you can use this apps' web UI or use the example scrip
 
 Load the web app in your browser and follow the instructions below.
 
-1. Setup webhook config. Navigate to the "manage webhook" view. Enter your webhook URL noted ealier and click "Create/Update."
+1. Setup webhook config. Navigate to the "manage webhook" view. Enter your webhook URL noted earlier and click "Create/Update."
 	
 2. Add a user subscription. Navigate to the "manage subscriptions" view. Click "add" and proceed with Twitter sign-in. Once complete your webhook will now recieve account activity events for the user.
 	
 	
 ### Using the command line example scripts
-These scripts should be executed from root fo the project folder. Your environment, url or webhook ID should be passed in as command line arguments.
+These scripts should be executed from root of the project folder. Your environment, url or webhook ID should be passed in as command line arguments.
 
 1. Create webhook config.
 
@@ -69,7 +69,7 @@ These scripts should be executed from root fo the project folder. Your environme
 	node example_scripts/webhook_management/create-webhook-config.js -e <environment> -u <url>
 	```
 
-2. Add auser subscription for the user that owns the app.
+2. Add a user subscription for the user that owns the app.
 
 	```
 	node example_scripts/subscription_management/add-subscription-app-owner.js -e <environment>
@@ -81,7 +81,7 @@ These scripts should be executed from root fo the project folder. Your environme
 	node example_scripts/subscription_management/add-subscription-other-user.js -e <environment>
 	```
 
-**Note:** More example scripts can be found in the [example_scripts](tree/master/example_scripts) directory to:
+**Note:** More example scripts can be found in the [example_scripts](example_scripts) directory to:
 
 * Create, delete, retrieve and validate webhook configs.
 * Add, remove, retrieve, count and list user subscriptions.
