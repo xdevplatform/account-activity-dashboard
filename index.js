@@ -12,7 +12,7 @@ const uuid = require('uuid/v4')
 const app = express()
 
 app.set('port', (process.env.PORT || 5000))
-app.set('views', __dirname + '/pages')
+app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
 
 app.use(express.static(__dirname + '/public'))
@@ -85,7 +85,7 @@ app.get('/', function(request, response) {
 /**
  * Subscription management
  **/
-app.get('/subscriptions', cacheRoute(1000), require('./views/subscriptions'))
+app.get('/subscriptions', cacheRoute(1000), require('./routes/subscriptions'))
 
 
 /**
@@ -106,7 +106,7 @@ app.get('/subscriptions/remove', passport.authenticate('twitter', {
 /**
  * Webhook management routes
  **/
-var webhook_view = require('./views/webhook')
+var webhook_view = require('./routes/webhook')
 app.get('/webhook', auth.basic, auth.csrf, webhook_view.get_config)
 app.post('/webhook/update', parseForm, auth.csrf, webhook_view.update_config)
 app.post('/webhook/validate', parseForm, auth.csrf, webhook_view.validate_config)
@@ -116,12 +116,12 @@ app.post('/webhook/delete', parseForm, auth.csrf, webhook_view.delete_config)
 /**
  * Activity view
  **/
-app.get('/activity', require('./views/activity'))
+app.get('/activity', require('./routes/activity'))
 
 
 /**
  * Handles Twitter sign-in OAuth1.0a callbacks
  **/
 app.get('/callbacks/:action', passport.authenticate('twitter', { failureRedirect: '/' }),
-  require('./views/sub-callbacks'))
+  require('./routes/sub-callbacks'))
 
