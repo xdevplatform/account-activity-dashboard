@@ -7,6 +7,7 @@ const security = require('./security')
 const auth = require('./auth')
 const cacheRoute = require('./cache-route')
 const socket = require('./socket')
+const uuid = require('uuid/v4')
 
 const app = express()
 
@@ -63,8 +64,11 @@ app.get('/webhook/twitter', function(request, response) {
 app.post('/webhook/twitter', function(request, response) {
 
   console.log(request.body)
-  var event = request.body
-  socket.io.emit('activity_event', event)
+  
+  socket.io.emit('activity_event', {
+    internal_id: uuid(),
+    event: request.body
+  })
 
   response.send('200 OK')
 })

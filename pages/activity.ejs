@@ -2,18 +2,38 @@
 
 <div class="row">
   <div id="event-container" class="col-sm-12">
-    <div id="waiting-msg" class="card">
-      <div class="card-body">
-        Waiting for activity . . .
+    
+    <!-- Intro message -->
+    <div id="about-msg" class="card">
+      <h3 class="card-header"><i class="fas fa-bolt"></i> Live Activity</h3>
+      <div class="json-event card-body">
+        <p>Account Activity events sent to your webhook will be displayed here when receieved in real-time. Events will be received for all <a href="/subscriptions">user subscriptions</a>.</p>
+        <p>Navigating away from this page will clear all events currently displayed.</p>
+        <button  class="btn btn-secondary copy-btn" onclick="dismiss()"><i class="fas fa-times-circle"></i> Dismiss</button>
       </div>
     </div>
+
+    <!-- Waiting message -->
+    <div id="waiting-msg" class="card">
+      <div class="card-body">
+        <i class="fas fa-clock"></i> Waiting for activity . . .
+      </div>
+    </div>
+
   </div>
 </div>
 
+<!-- JSON template -->
 <script id="json_template" type="text/x-handlebars-template"> 
   <div class="card">
+    <div id="json_header_{{internal_id}}" class="card-header text-right text-muted">
+      <i class="fas fa-bookmark icon-btn" onclick="mark('{{internal_id}}')"></i>&nbsp;
+      <i class="fas fa-copy icon-btn" onclick="copy_json('{{internal_id}}')"></i>&nbsp;
+      <i id="max-btn" class="fas fa-window-maximize icon-btn" onclick="expand('{{internal_id}}')"></i>&nbsp;
+      <i id="min-btn" class="fas fa-window-minimize icon-btn" onclick="expand('{{internal_id}}')"></i>
+    </div>
     <div class="json-event card-body">
-      <pre class="prettyprint linenums lang-js">{{payload}}</pre>
+      <textarea id="json_str_{{internal_id}}" class="form-control">{{json_str}}</textarea>
     </div>
   </div>
 </script>
@@ -26,14 +46,53 @@
     // get template
     var tmpl_source = document.getElementById('json_template').innerHTML;
     var template = Handlebars.compile(tmpl_source);
+    var cards = $('#event-container .card');
     // control max events
-    if($('#event-container .card').length >= 30) {
-      $('#event-container .card').last().remove();
+    if(cards.length >= 100) {
+      cards.last().remove();
     }
     // render
-    $('#event-container').prepend(template({ payload: JSON.stringify(data, null, 2) }));
+    $('#event-container').prepend(template({
+      internal_id: data.internal_id,
+      json_str: JSON.stringify(data.event, null, 2)
+    }));
     $('#waiting-msg').hide();
   });
+
+  function copy_json (internal_id) {
+    var textarea = $('#json_str_'+internal_id);
+    textarea.select();
+    document.execCommand('copy');
+    document.getSelection().removeAllRanges();
+    textarea.blur();
+  }
+
+  function expand (internal_id) {
+    var textarea = $('#json_str_'+internal_id);
+    if (textarea.height() > 200) {
+      textarea.height(200);
+      $('#max-btn').show();
+      $('#min-btn').hide();
+    } else {
+      textarea.height(textarea[0].scrollHeight);
+      $('#max-btn').hide();
+      $('#min-btn').show();
+    }
+  }
+
+  function mark (internal_id) {
+    var header = $('#json_header_'+internal_id);
+    if (header.hasClass('bg-warning')) {
+      header.removeClass('bg-warning');
+    } else {
+      header.addClass('bg-warning');
+    }
+  }
+
+  function dismiss () {
+    $('#about-msg').hide();
+  }
+
 </script>
 
 <% include partials/footer.ejs %>

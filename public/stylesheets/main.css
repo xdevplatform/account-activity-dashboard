@@ -7,6 +7,7 @@ body {
   background: linear-gradient(#FFF, #DDD);
   background-attachment: fixed;
   height: 100%;
+  overflow-y: scroll;
 }
 
 nav, .card {
@@ -22,11 +23,19 @@ nav, .jumbotron, .card {
 }
 
 .json-event {
-  max-height: 300px;
-  overflow-x: hidden;
-  overflow-y: scroll; 
+
 }
 
-.json-event pre {
-  overflow-x: hidden;
+.json-event textarea {
+  height: 200px;
+  font-family: "Courier New", Courier, monospace;
+  background-color: #f8f9fa;
+}
+
+#min-btn {
+  display: none;
+}
+
+.icon-btn {
+  cursor: pointer;
 }

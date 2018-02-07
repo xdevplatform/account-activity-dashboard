@@ -3,15 +3,15 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="card">
-      <h3 class="card-header">Manage Subscriptions</h3>
+      <h3 class="card-header"><i class="fas fa-address-book"></i> Manage Subscriptions</h3>
       <div class="card-body">
         <p><strong>Environment:</strong> <%= environment %><br/>
         <strong>Application ID:</strong> <%= application_id %></p>
         <hr/>
         <p>To add or remove a user subscription, you will be asked to sign-in with the
         Twitter account you wish to add or remove the subscrition for.</p>
-        <a href="/subscriptions/add" class="btn btn-success">Add</a>
-        <a href="/subscriptions/remove" class="btn btn-warning">Remove</a>
+        <a href="/subscriptions/add" class="btn btn-success"><i class="fas fa-user-plus"></i> Add</a>
+        <a href="/subscriptions/remove" class="btn btn-warning"><i class="fas fa-user-times"></i> Remove</a>
       </div>
     </div>
   </div>
@@ -20,7 +20,7 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="card">
-      <h3 class="card-header">All Subscriptions</h3>
+      <h3 class="card-header"><i class="fas fa-users"></i> All Subscriptions</h3>
       <% if(subscriptions.length) { %>
       <table class="table table-striped">
         <thead>
