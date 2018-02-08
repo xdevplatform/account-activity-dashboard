@@ -22,22 +22,26 @@ nav, .jumbotron, .card {
   box-shadow: 0px 8px 10px #CCC;
 }
 
-.json-event {
-
-}
-
 .json-event textarea {
   height: 200px;
   font-family: "Courier New", Courier, monospace;
   background-color: #f8f9fa;
 }
 
-#min-btn {
+.json-event textarea:disabled {
+  background-color: #f8f9fa;
+}
+
+.fa-window-minimize {
   display: none;
 }
 
 .icon-btn {
   cursor: pointer;
+}
+
+.icon-btn:hover {
+  color: #333;
 }
 
 #home-menu li {

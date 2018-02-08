@@ -11,7 +11,7 @@
         <div class="alert alert-primary" role="alert"><strong>Note:</strong> Navigating away from this page will clear all events currently displayed.</div>
       </div>
       <div class="card-footer">
-        <button  class="btn btn-secondary copy-btn" onclick="dismiss()"><i class="fas fa-times-circle"></i> Dismiss</button>
+        <button  class="btn btn-secondary copy-btn" onclick="activity.dismiss_about_msg()"><i class="fas fa-times-circle"></i> Dismiss</button>
       </div>
     </div>
 
@@ -28,73 +28,24 @@
 <!-- JSON template -->
 <script id="json_template" type="text/x-handlebars-template"> 
   <div class="card">
-    <div id="json_header_{{internal_id}}" class="card-header text-right text-muted">
-      <i class="fas fa-bookmark icon-btn" onclick="mark('{{internal_id}}')"></i>&nbsp;
-      <i class="fas fa-copy icon-btn" onclick="copy_json('{{internal_id}}')"></i>&nbsp;
-      <i id="max-btn" class="fas fa-window-maximize icon-btn" onclick="expand('{{internal_id}}')"></i>&nbsp;
-      <i id="min-btn" class="fas fa-window-minimize icon-btn" onclick="expand('{{internal_id}}')"></i>
+    <div id="json-header-{{internal_id}}" class="card-header text-right text-muted">
+      <i class="fas fa-bookmark icon-btn" onclick="activity.mark('{{internal_id}}')"></i>&nbsp;
+      <i class="fas fa-copy icon-btn" onclick="activity.copy_json('{{internal_id}}')"></i>&nbsp;
+      <i id="max-btn-{{internal_id}}" class="fas fa-window-maximize icon-btn" onclick="activity.expand('{{internal_id}}')"></i>
+      <i id="min-btn-{{internal_id}}" class="fas fa-window-minimize icon-btn" onclick="activity.expand('{{internal_id}}')"></i>
     </div>
     <div class="json-event card-body">
-      <textarea id="json_str_{{internal_id}}" class="form-control">{{json_str}}</textarea>
+      <textarea id="json-str-{{internal_id}}" class="form-control" disabled>{{json_str}}</textarea>
     </div>
   </div>
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js" type="text/javascript"></script>
 <script src="/socket.io/socket.io.js" type="text/javascript"></script>
-<script>
-  var socket = io.connect('<%= socket_host  %>');
-  socket.on('activity_event', function (data) {
-    // get template
-    var tmpl_source = document.getElementById('json_template').innerHTML;
-    var template = Handlebars.compile(tmpl_source);
-    var cards = $('#event-container .card');
-    // control max events
-    if(cards.length >= 100) {
-      cards.last().remove();
-    }
-    // render
-    $('#event-container').prepend(template({
-      internal_id: data.internal_id,
-      json_str: JSON.stringify(data.event, null, 2)
-    }));
-    $('#waiting-msg').hide();
-  });
+<script src="/javascript/activity.js" type="text/javascript"></script>
 
-  function copy_json (internal_id) {
-    var textarea = $('#json_str_'+internal_id);
-    textarea.select();
-    document.execCommand('copy');
-    document.getSelection().removeAllRanges();
-    textarea.blur();
-  }
-
-  function expand (internal_id) {
-    var textarea = $('#json_str_'+internal_id);
-    if (textarea.height() > 200) {
-      textarea.height(200);
-      $('#max-btn').show();
-      $('#min-btn').hide();
-    } else {
-      textarea.height(textarea[0].scrollHeight);
-      $('#max-btn').hide();
-      $('#min-btn').show();
-    }
-  }
-
-  function mark (internal_id) {
-    var header = $('#json_header_'+internal_id);
-    if (header.hasClass('bg-warning')) {
-      header.removeClass('bg-warning');
-    } else {
-      header.addClass('bg-warning');
-    }
-  }
-
-  function dismiss () {
-    $('#about-msg').hide();
-  }
-
+<script type="text/javascript">
+  activity.connect('<%= socket_host  %>');
 </script>
 
 <% include partials/footer.ejs %>
