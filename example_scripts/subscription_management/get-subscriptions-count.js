@@ -1,5 +1,5 @@
 const request = require('request-promise')
-const auth = require('../../auth.js')
+const auth = require('../../helpers/auth.js')
 
 
 auth.get_twitter_bearer_token().then(function (bearer_token) {

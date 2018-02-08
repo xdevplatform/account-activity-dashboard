@@ -1,5 +1,5 @@
 const request = require('request-promise')
-const auth = require('../../auth.js')
+const auth = require('../../helpers/auth.js')
 const args = require('../args.js')
 
 
@@ -20,5 +20,5 @@ var request_options = {
 request.post(request_options).then(function (body) {
   console.log(body)
 }).catch(function (body) {
-  console.log(body.error)
+  console.log(body)
 })

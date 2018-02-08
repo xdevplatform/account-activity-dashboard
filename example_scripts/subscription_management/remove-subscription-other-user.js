@@ -1,7 +1,7 @@
 const request = require('request-promise')
 const queryString = require('query-string');
 const prompt = require('prompt-promise');
-const auth = require('../../auth.js')
+const auth = require('../../helpers/auth.js')
 const args = require('../args.js')
 
 

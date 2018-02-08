@@ -1,5 +1,5 @@
 const request = require('request-promise')
-const auth = require('../../auth.js')
+const auth = require('../../helpers/auth.js')
 const args = require('../args.js')
 
 

@@ -1,10 +1,8 @@
 const request = require('request-promise')
 const queryString = require('query-string');
 const prompt = require('prompt-promise');
-const auth = require('../../auth.js')
+const auth = require('../../helpers/auth.js')
 const args = require('../args.js')
-
-// adds subscription for user 
 
 
 var request_options = {
@@ -24,5 +22,5 @@ request.post(request_options).then(function (response) {
   console.log('- Verify environment name.')
   console.log('- Verify "Read, Write and Access direct messages" is enabled on apps.twitter.com.')
   console.log('Full error message below:')
-  console.log(response)
+  console.log(response.error)
 })
