@@ -68,7 +68,7 @@ module.exports = function (req, response) {
       message: 'Subscriptions unable to be retrieved.',
       button: {
         title: 'Ok',
-        url: '/webhook'
+        url: '/'
       }
     }
 
