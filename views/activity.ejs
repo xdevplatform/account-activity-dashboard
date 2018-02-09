@@ -29,10 +29,10 @@
 <script id="json_template" type="text/x-handlebars-template"> 
   <div class="card">
     <div id="json-header-{{internal_id}}" class="card-header text-right text-muted">
-      <i class="fas fa-bookmark icon-btn" onclick="activity.mark('{{internal_id}}')"></i>&nbsp;
-      <i class="fas fa-copy icon-btn" onclick="activity.copy_json('{{internal_id}}')"></i>&nbsp;
-      <i id="max-btn-{{internal_id}}" class="fas fa-window-maximize icon-btn" onclick="activity.expand('{{internal_id}}')"></i>
-      <i id="min-btn-{{internal_id}}" class="fas fa-window-minimize icon-btn" onclick="activity.expand('{{internal_id}}')"></i>
+      <i title="Highlight" class="fas fa-bookmark icon-btn" onclick="activity.mark('{{internal_id}}')"></i>&nbsp;
+      <i title="Copy" class="fas fa-copy icon-btn" onclick="activity.copy_json('{{internal_id}}')"></i>&nbsp;
+      <i id="max-btn-{{internal_id}}" title="Expand" class="fas fa-window-maximize icon-btn" onclick="activity.expand('{{internal_id}}')"></i>
+      <i id="min-btn-{{internal_id}}" title="Minimize" class="fas fa-window-minimize icon-btn" onclick="activity.expand('{{internal_id}}')"></i>
     </div>
     <div class="json-event card-body">
       <textarea id="json-str-{{internal_id}}" class="form-control" disabled>{{json_str}}</textarea>
@@ -45,7 +45,7 @@
 <script src="/javascript/activity.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-  activity.connect('<%= socket_host  %>');
+  activity.connect('<%= socket_host  %>', '<%= activity_event  %>');
 </script>
 
 <% include partials/footer.ejs %>

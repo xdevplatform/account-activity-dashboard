@@ -65,7 +65,7 @@ app.post('/webhook/twitter', function(request, response) {
 
   console.log(request.body)
   
-  socket.io.emit('activity_event', {
+  socket.io.emit(socket.activity_event, {
     internal_id: uuid(),
     event: request.body
   })
