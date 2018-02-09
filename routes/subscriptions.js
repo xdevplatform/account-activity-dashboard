@@ -62,8 +62,18 @@ module.exports = function (req, response) {
 
   .catch(function (body) {
     console.log(body)
-    response.status(500);
-    response.send('Error: List unable to be retrieved.')
+
+    var json_response = {
+      title: 'Error',
+      message: 'Subscriptions unable to be retrieved.',
+      button: {
+        title: 'Ok',
+        url: '/webhook'
+      }
+    }
+
+    resp.status(500);
+    resp.render('status', json_response)
   })
 
 }
