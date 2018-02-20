@@ -7,8 +7,8 @@ const mcache = require('memory-cache')
  */
 module.exports = (duration) => {
   return (request, response, next) => {
-    let key = '__express__' + request.originalUrl || request.url
-    let cached_response = mcache.get(key)
+    var key = '__express__' + request.originalUrl || request.url
+    var cached_response = mcache.get(key)
     if (cached_response) {
       response.send(cached_response)
       return
