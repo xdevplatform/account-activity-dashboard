@@ -116,7 +116,7 @@ app.post('/webhook/delete', parseForm, auth.csrf, webhook_view.delete_config)
 /**
  * Activity view
  **/
-app.get('/activity', require('./routes/activity'))
+app.get('/activity', auth.basic, require('./routes/activity'))
 
 
 /**
