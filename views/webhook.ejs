@@ -56,7 +56,7 @@
       <h3 class="card-header"><i class="fas fa-check"></i> Validate Webhook</h3>
       <div class="card-body">
         <p>Trigger a challenge request from the Twitter webhook server to your
-        reigistered webhook URL. Helpful if you need to manually trigger validation to re-enable your webhook.</p>
+        registered webhook URL. Helpful if you need to manually trigger validation to re-enable your webhook.</p>
         <form id="validate-form" method="post" action="/webhook/validate">
           <input type="hidden" name="_csrf" value="<%= csrf_token %>">
           <input name="webhook_id" type="hidden" class="form-control" value="<%= configs[0].id %>">
