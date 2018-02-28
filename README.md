@@ -1,9 +1,9 @@
 # account-activity-dashboard
-Sample web app and helper scripts to get started with Standard Account Activity API (All Activities). Written in Node.js. Full documention can be found on developer.twitter.com [here](https://developer.twitter.com/en/docs/accounts-and-users/subscribe-account-activity/overview).
+Sample web app and helper scripts to get started with Standard Account Activity API (All Activities). Written in Node.js. Full documentation for this API can be found on developer.twitter.com [here](https://developer.twitter.com/en/docs/accounts-and-users/subscribe-account-activity/overview).
 
 ## Dependencies
 
-* A Twitter app created on [apps.twitter.com](https://apps.twitter.com/)
+* A Twitter app created on [apps.twitter.com](https://apps.twitter.com/), whitelisted for access to the Account Activity API
 * [Node.js](https://nodejs.org)
 * [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) or other webhost (optional)
 * [ngrok](https://ngrok.com/) or other tunneling service (optional)
@@ -32,7 +32,7 @@ Sample web app and helper scripts to get started with Standard Account Activity 
 	npm install
 	```
 
-3. Create a new `config.json` file based on `config.sample.json` and fill in your Twitter keys, tokens and webhook environment name. Twitter keys and access tokens are found on your app page on [apps.twitter.com](https://apps.twitter.com/). The basic auth properties can be anything you want and are used for basic password protection to access the web apps UI.
+3. Create a new `config.json` file based on `config.sample.json` and fill in your Twitter keys, tokens and webhook environment name. Twitter keys and access tokens are found on your app page on [apps.twitter.com](https://apps.twitter.com/). The basic auth properties can be anything you want, and are used for basic password protection to access the web apps UI.
 
 4. Run locally:
 
@@ -49,7 +49,7 @@ Sample web app and helper scripts to get started with Standard Account Activity 
 	```
 	
 ## Configure webhook to receive events
-To configure your webhook you can use this apps' web UI or use the example scripts from the command line.
+To configure your webhook you can use this apps' web UI, or use the example scripts from the command line.
 
 ### Using the web UI
 
@@ -57,8 +57,7 @@ Load the web app in your browser and follow the instructions below.
 
 1. Setup webhook config. Navigate to the "manage webhook" view. Enter your webhook URL noted earlier and click "Create/Update."
 	
-2. Add a user subscription. Navigate to the "manage subscriptions" view. Click "add" and proceed with Twitter sign-in. Once complete your webhook will now recieve account activity events for the user.
-	
+2. Add a user subscription. Navigate to the "manage subscriptions" view. Click "add" and proceed with Twitter sign-in. Once complete your webhook will start to receive account activity events for the user.
 	
 ### Using the command line example scripts
 These scripts should be executed from root of the project folder. Your environment, url or webhook ID should be passed in as command line arguments.
@@ -116,8 +115,8 @@ node example_scripts/webhook_management/validate-webhook-config.js -e <environme
 ```
 
 ## Production considerations
-This app is for demonstration purposes only and should not be used in production without further modifcations. Dependencies on databases, and other types of services are purposley not within the scope of this app. Some considerations below:
+This app is for demonstration purposes only, and should not be used in production without further modifcations. Dependencies on databases, and other types of services are intentionally not within the scope of this sample app. Some considerations below:
 
-- User information is stored in server side sessions. This may not provide the best user experience or be the best solution for your usecase, espcially if you are adding more functionality.
-- The application can handle light usage, but you may experience API rate limit issues under heavier usage. Consider storing data locally in a secure database or caching requests.
-- To support multiple users (admins, team members, customers, etc) consider implementing a form of ACL.</li>
+- User information is stored in server side sessions. This may not provide the best user experience or be the best solution for your use case, especially if you are adding more functionality.
+- The application can handle light usage, but you may experience API rate limit issues under heavier usage. Consider storing data locally in a secure database, or caching requests.
+- To support multiple users (admins, team members, customers, etc) consider implementing a form of ACL.
