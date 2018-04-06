@@ -31,7 +31,7 @@ module.exports = function (req, resp) {
     actions[req.params.action](req.user).then(function (response) {
       var json_response = {
         title: 'Success',
-        message: 'Subscriptions successfully modifed.',
+        message: 'Subscriptions successfully modified.',
         button: {
           title: 'Ok',
           url: '/subscriptions'
@@ -42,7 +42,7 @@ module.exports = function (req, resp) {
       console.log(response)
       var json_response = {
         title: 'Error',
-        message: 'Subscriptions unable to be modifed.',
+        message: 'Subscriptions unable to be modified.',
         button: {
           title: 'Ok',
           url: '/subscriptions'
