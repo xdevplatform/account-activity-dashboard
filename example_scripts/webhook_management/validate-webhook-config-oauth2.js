@@ -14,7 +14,7 @@ auth.get_twitter_bearer_token().then(function (bearer_token) {
     }
   }
 
-  // PUT request to retreive webhook config
+  // PUT request to retrieve webhook config
   request.put(request_options).then(function (response) {
     console.log('HTTP response code:', response.statusCode)
     console.log('CRC request successful and webhook status set to valid.')
