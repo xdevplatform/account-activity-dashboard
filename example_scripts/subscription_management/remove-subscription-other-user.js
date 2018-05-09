@@ -13,11 +13,11 @@ var request_token_request_options = {
 
 var request_token_response;
 
-// generates URL for login and prmpts for PIN
+// generates URL for login and prompts for PIN
 request.get(request_token_request_options).then(function (body) {
   request_token_response = queryString.parse(body)
   
-  console.log('Open this URL in a browser and sign-in with the Twitter account you wish to subscribe to:')
+  console.log('Open this URL in a browser and sign-in with the Twitter account you wish to remove subscription from:')
   console.log('https://api.twitter.com/oauth/authorize?oauth_token=' + request_token_response['oauth_token'] + '&force_login=true')
 
   return prompt('Enter the generated PIN:')

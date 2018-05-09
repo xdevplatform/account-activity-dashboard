@@ -65,7 +65,7 @@ module.exports = function (req, response) {
 
     var json_response = {
       title: 'Error',
-      message: 'Subscriptions unable to be retrieved.',
+      message: 'Subscriptions could not be retrieved.',
       button: {
         title: 'Ok',
         url: '/'

@@ -13,7 +13,7 @@ var request_token_request_options = {
 
 var request_token_response;
 
-// generates URL for login and prmpts for PIN
+// generates URL for login and prompts for PIN
 request.get(request_token_request_options).then(function (body) {
   request_token_response = queryString.parse(body)
   
