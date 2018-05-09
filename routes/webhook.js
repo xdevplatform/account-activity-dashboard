@@ -6,10 +6,10 @@ var webhook = {}
 
 
 /**
- * Retrieves existing webhoo config and renders
+ * Retrieves existing webhook config and renders
  */
 webhook.get_config = function (req, resp) {
-  // construct request to retreive webhook config
+  // construct request to retrieve webhook config
   var request_options = {
     url: 'https://api.twitter.com/1.1/account_activity/all/' + auth.twitter_webhook_environment + '/webhooks.json',
     oauth: auth.twitter_oauth
