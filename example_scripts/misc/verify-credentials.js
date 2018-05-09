@@ -1,5 +1,5 @@
 var request = require('request-promise')
-var auth = require('../../auth.js')
+var auth = require('../../helpers/auth.js')
 
 
 // request options
@@ -12,7 +12,7 @@ request_options = {
 request.get(request_options, function (error, response, body) {
 
   if (error) {
-    console.log('Error retreiving user data.')
+    console.log('Error retrieving user data.')
     console.log(error)
     return;
   }
