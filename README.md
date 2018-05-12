@@ -33,7 +33,7 @@ Sample web app and helper scripts to get started with Standard Account Activity 
     npm install
     ```
 
-3. Create a new `config.json` file based on `config.sample.json` and fill in your Twitter keys, tokens and webhook environment name. Twitter keys and access tokens are found on your app page on [apps.twitter.com](https://apps.twitter.com/). The basic auth properties can be anything you want, and are used for basic password protection to access the web apps UI.
+3. Create a new `config.json` file based on `config.sample.json` and fill in your Twitter keys, tokens and webhook environment name. Twitter keys and access tokens are found on your app page on [apps.twitter.com](https://apps.twitter.com/). The basic auth properties can be anything you want, and are used for simple password protection to access the configuration UI.
 
 4. Run locally:
 
@@ -86,9 +86,9 @@ These scripts should be executed from root of the project folder. Your environme
 
 3. To add a user subscription for another user using PIN-based Twitter sign-in.
 
-```bash
-node example_scripts/subscription_management/add-subscription-other-user.js -e <environment>
-```
+    ```bash
+    node example_scripts/subscription_management/add-subscription-other-user.js -e <environment>
+    ```
 
 **Note:** More example scripts can be found in the [example_scripts](example_scripts) directory to:
 
@@ -105,7 +105,7 @@ node example_scripts/subscription_management/add-subscription-other-user.js -e <
 
 2. Run locally.
 
-    ```bash
+    ```text
     heroku local
     ```
 
@@ -127,6 +127,6 @@ node example_scripts/webhook_management/validate-webhook-config.js -e <environme
 
 This app is for demonstration purposes only, and should not be used in production without further modifcations. Dependencies on databases, and other types of services are intentionally not within the scope of this sample app. Some considerations below:
 
-* User information is stored in server side sessions. This may not provide the best user experience or be the best solution for your use case, especially if you are adding more functionality.
-* The application can handle light usage, but you may experience API rate limit issues under heavier usage. Consider storing data locally in a secure database, or caching requests.
-* To support multiple users (admins, team members, customers, etc) consider implementing a form of ACL.
+* With this basic application, user information is stored in server side sessions. This may not provide the best user experience or be the best solution for your use case, especially if you are adding more functionality.
+* The application can handle light usage, but you may experience API rate limit issues under heavier load. Consider storing data locally in a secure database, or caching requests.
+* To support multiple users (admins, team members, customers, etc), consider implementing a form of Access Control List or better security.
