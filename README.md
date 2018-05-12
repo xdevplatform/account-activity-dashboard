@@ -86,9 +86,9 @@ These scripts should be executed from root of the project folder. Your environme
 
 3. To add a user subscription for another user using PIN-based Twitter sign-in.
 
-    ```bash
-    node example_scripts/subscription_management/add-subscription-other-user.js -e <environment>
-    ```
+```bash
+node example_scripts/subscription_management/add-subscription-other-user.js -e <environment>
+```
 
 **Note:** More example scripts can be found in the [example_scripts](example_scripts) directory to:
 
