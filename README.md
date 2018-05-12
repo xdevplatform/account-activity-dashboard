@@ -119,9 +119,9 @@ node example_scripts/subscription_management/add-subscription-other-user.js -e <
 
 **Note:** The free tier of Heroku will put your app to sleep after 30 minutes. On cold start, you app will have very high latency which may result in a CRC failure that deactivates your webhook. To trigger a challenge response request and re-validate, run the following script.
 
-    ```bash
-    node example_scripts/webhook_management/validate-webhook-config.js -e <environment> -i <webhook_id>
-    ```
+```bash
+node example_scripts/webhook_management/validate-webhook-config.js -e <environment> -i <webhook_id>
+```
 
 ## Production considerations
 
