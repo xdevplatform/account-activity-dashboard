@@ -1,6 +1,6 @@
 {
   "name": "account-activity-dashboard",
-  "description": "Sample web app and helper scripts to get started with Standard Account Activity API (All Activities). Written in Node.js.",
+  "description": "Sample web app and helper scripts to get started with Twitter's Account Activity API. Written in Node.js.",
   "repository": "https://github.com/twitterdev/account-activity-dashboard",
   "keywords": ["node", "express", "api", "webhook", "twitter"],
   "success_url": "/"
