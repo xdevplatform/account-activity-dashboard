@@ -65,7 +65,7 @@ passport.deserializeUser(function(obj, cb) {
  * Retrieves a Twitter Sign-in auth URL for OAuth1.0a
  */
 auth.get_twitter_auth_url = function (host, callback_action) {
-  
+
   // construct request to retrieve authorization token
   var request_options = {
     url: 'https://api.twitter.com/oauth/request_token',
@@ -87,7 +87,7 @@ auth.get_twitter_auth_url = function (host, callback_action) {
         var response_params = queryString.parse(response.body)
         console.log(response_params)
         var twitter_auth_url = 'https://api.twitter.com/oauth/authenticate?force_login=true&oauth_token=' + response_params.oauth_token
-        
+
         resolve({
           response_params: response_params,
           twitter_auth_url: twitter_auth_url

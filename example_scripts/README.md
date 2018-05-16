@@ -1,7 +1,7 @@
 # Command line example scripts
 These scripts should be executed from root of the project folder. Your environment, url or webhook ID should be passed in as command line arguments. Your app keys and tokens should be defined in a `config.json` file at the root of this project folder.
 
-These scripts only work with the Standard Account Activity API (All Activities).
+These scripts only work with the premium Account Activity API.
 
 ---
 

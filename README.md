@@ -1,6 +1,6 @@
 # account-activity-dashboard
 
-Sample web app and helper scripts to get started with Standard Account Activity API (All Activities). Written in Node.js. Full documentation for this API can be found on developer.twitter.com [here](https://developer.twitter.com/en/docs/accounts-and-users/subscribe-account-activity/overview).
+Sample web app and helper scripts to get started with Twitter's premium Account Activity API (All Activities). Written in Node.js. Full documentation for this API can be found on developer.twitter.com [here](https://developer.twitter.com/en/docs/accounts-and-users/subscribe-account-activity/overview).
 
 ## Dependencies
 
@@ -129,4 +129,4 @@ This app is for demonstration purposes only, and should not be used in productio
 
 * With this basic application, user information is stored in server side sessions. This may not provide the best user experience or be the best solution for your use case, especially if you are adding more functionality.
 * The application can handle light usage, but you may experience API rate limit issues under heavier load. Consider storing data locally in a secure database, or caching requests.
-* To support multiple users (admins, team members, customers, etc), consider implementing a form of Access Control List or better security.
+* To support multiple users (admins, team members, customers, etc), consider implementing a form of Access Control List for better security.
