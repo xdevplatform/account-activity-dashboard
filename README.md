@@ -4,20 +4,20 @@ Sample web app and helper scripts to get started with Twitter's premium Account 
 
 ## Dependencies
 
-* A Twitter app created on [apps.twitter.com](https://apps.twitter.com/), whitelisted for access to the Account Activity API
+* A Twitter app created on [developer.twitter.com](https://developer.twitter.com/en/apps), whitelisted for access to the Account Activity API
 * [Node.js](https://nodejs.org)
 * [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) or other webhost (optional)
 * [ngrok](https://ngrok.com/) or other tunneling service (optional)
 
 ## Create and configure a Twitter app
 
-1. Create a Twitter app on [apps.twitter.com](https://apps.twitter.com/)
+1. Create a Twitter app on [developer.twitter.com](https://developer.twitter.com/en/apps)
 
-2. On the **Permissions** tab > **Access** section > enable **Read, Write and Access direct messages**.
+2. On the **Permissions** tab > **Edit** > **Access permission** section > enable **Read, Write and direct messages**.
 
-3. On the **Keys and Access Tokens** tab > **Your Access Token** section > click **Create my access token** button.
+3. On the **Keys and Tokens** tab > **Access token & access token secret** section > click **Create** button.
 
-4. On the **Keys and Access Tokens** tab, take note of the `consumer key`, `consumer secret`, `access token` and `access token secret`.
+4. On the **Keys and Tokens** tab, take note of the `consumer API key`, `consumer API secret`, `access token` and `access token secret`.
 
 ## Setup & run the Node.js web app
 
@@ -49,7 +49,7 @@ Sample web app and helper scripts to get started with Twitter's premium Account 
     https://your.app.domain/webhook/twitter
     ```
 
-6. Take note of the deployed URL, revisit your apps.twitter.com **Settings** page, and add the following URL values as whitelisted Callback URLs:
+6. Take note of the deployed URL, revisit your developer.twitter.com Apps **Settings** page, and add the following URL values as whitelisted Callback URLs:
 
     ```text
     http(s)://your.app.domain/callbacks/addsub
