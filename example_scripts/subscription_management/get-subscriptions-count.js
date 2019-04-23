@@ -6,7 +6,7 @@ auth.get_twitter_bearer_token().then(function (bearer_token) {
 
   // request options
   var request_options = {
-    url: 'https://api.twitter.com/1.1/account_activity/all/count.json',
+    url: 'https://api.twitter.com/1.1/account_activity/all/subscriptions/count.json',
     auth: {
       'bearer': bearer_token
     }
