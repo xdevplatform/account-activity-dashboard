@@ -5,7 +5,7 @@ const args = require('../args.js')
 
 // request options
 var request_options = {
-  url: 'https://api.twitter.com/1.1/account_activity/all/' + args.environment + '/webhooks.json',
+  url: 'https://api.twitter.com/1.1/account_activity/all/webhooks/' + args.webhookid + '.json',
   oauth: auth.twitter_oauth
 }
 
@@ -14,7 +14,7 @@ var request_options = {
 request.get(request_options).then( function (body) {
   // parse webhook ID
   var webhook_id = JSON.parse(body)[0].id
-  
+
   console.log('Deleting webhook config:', webhook_id)
 
   // update request options for delete endpoint

@@ -5,7 +5,7 @@ const args = require('../args.js')
 
 // request options
 var request_options = {
-  url: 'https://api.twitter.com/1.1/account_activity/all/' + args.environment + '/subscriptions.json',
+  url: 'https://api.twitter.com/1.1/account_activity/webhooks/' + args.webhookid + '/subscriptions/all.json',
   oauth: auth.twitter_oauth,
   resolveWithFullResponse: true
 }

@@ -5,7 +5,7 @@ const args = require('../args.js')
 
 // request options
 var request_options = {
-  url: 'https://api.twitter.com/1.1/account_activity/all/' + args.environment + '/webhooks/' + args.webhookid + '.json',
+  url: 'https://api.twitter.com/1.1/account_activity/webhooks/' + args.webhookid + '.json',
   oauth: auth.twitter_oauth,
   resolveWithFullResponse: true
 }
@@ -18,4 +18,4 @@ request.put(request_options).then(function (response) {
 }).catch(function (response) {
   console.log('HTTP response code:', response.statusCode)
   console.log(response.error)
-}) 
+})
