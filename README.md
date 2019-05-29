@@ -2,6 +2,8 @@
 
 Sample web app and helper scripts to get started with Twitter's premium Account Activity API (All Activities). Written in Node.js. Full documentation for this API can be found on developer.twitter.com [here](https://developer.twitter.com/en/docs/accounts-and-users/subscribe-account-activity/overview).
 
+For the enterprise tier of the Account Activity API, please check out the [Enterprise Account Activity Dashboard sample app](https://github.com/twitterdev/account-activity-dashboard-enterprise).
+
 ## Dependencies
 
 * A Twitter app created on [developer.twitter.com](https://developer.twitter.com/en/apps), whitelisted for access to the Account Activity API
