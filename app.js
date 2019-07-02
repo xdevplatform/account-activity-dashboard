@@ -85,6 +85,9 @@ app.get('/', function(request, response) {
 /**
  * Subscription management
  **/
+
+auth.basic = auth.basic || ((req, res, next) => next())
+
 app.get('/subscriptions', auth.basic, cacheRoute(1000), require('./routes/subscriptions'))
 
 
