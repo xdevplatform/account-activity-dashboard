@@ -1,25 +1,25 @@
 # account-activity-dashboard
 
-Sample web app and helper scripts to get started with Twitter's premium Account Activity API (All Activities). Written in Node.js. Full documentation for this API can be found on developer.twitter.com [here](https://developer.twitter.com/en/docs/accounts-and-users/subscribe-account-activity/overview).
+Sample web app and helper scripts to get started with Twitter's premium Account Activity API (All Activities). Written in Node.js. Full documentation for this API can be found on the [Account Activity API reference](https://developer.twitter.com/en/docs/accounts-and-users/subscribe-account-activity/overview).
 
 For the enterprise tier of the Account Activity API, please check out the [Enterprise Account Activity Dashboard sample app](https://github.com/twitterdev/account-activity-dashboard-enterprise).
 
 ## Dependencies
 
-* A Twitter app created on [developer.twitter.com](https://developer.twitter.com/en/apps), whitelisted for access to the Account Activity API
+* A Twitter app created on [developer.twitter.com](https://developer.twitter.com/en/apps), enabled for access to the Account Activity API
 * [Node.js](https://nodejs.org)
 * [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) or other webhost (optional)
 * [ngrok](https://ngrok.com/) or other tunneling service (optional)
 
 ## Create and configure a Twitter app
 
-1. Create a Twitter app on [developer.twitter.com](https://developer.twitter.com/en/apps)
+1. Create a Twitter app on [Twitter Developer](https://developer.twitter.com/en/apps)
 
-2. On the **Permissions** tab > **Edit** > **Access permission** section > enable **Read, Write and direct messages**.
+2. On the **Permissions** tab ➡️ **Edit** ➡️ **Access permission** section ➡️ enable **Read, Write and direct messages**.
 
-3. On the **Keys and Tokens** tab > **Access token & access token secret** section > click **Create** button.
+3. On the **Keys and Tokens** tab ➡️ **Access token & access token secret** section ➡️ click **Create** button.
 
-4. On the **Keys and Tokens** tab, take note of the `consumer API key`, `consumer API secret`, `access token` and `access token secret`.
+4. On the **Keys and Tokens** tab, take note of the **consumer API key**, **consumer API secret**, **access token** and **access token secret**.
 
 ## Setup & run the Node.js web app
 
@@ -35,7 +35,19 @@ For the enterprise tier of the Account Activity API, please check out the [Enter
     npm install
     ```
 
-3. Create a new `config.json` file based on `config.sample.json` and fill in your Twitter keys, tokens and webhook environment name. Twitter keys and access tokens are found on your app page on [apps.twitter.com](https://apps.twitter.com/). The basic auth properties can be anything you want, and are used for simple password protection to access the configuration UI.
+3. Pass your Twitter keys, tokens and webhook environment name as environment variables. Twitter keys and access tokens are found on your app page on your [App Dashboard](https://developer.twitter.com/apps). The basic auth properties can be anything you want, and are used for simple password protection to access the configuration UI. As an alternative, instead of setting up env variables, you can copy the `env.template` file into a file named `.env` and and add these details there. 
+
+   ```bash
+   TWITTER_CONSUMER_KEY= # your consumer key
+   TWITTER_CONSUMER_SECRET= # your consimer secret
+   TWITTER_ACCESS_TOKEN= # your access token
+   TWITTER_ACCESS_TOKEN_SECRET= # your access token secret
+   TWITTER_WEBHOOK_ENV= # the name of your environment as specified in your App environment on Twitter Developer
+   BASIC_AUTH_USER= # your basic auth user
+   BASIC_AUTH_PASSWORD= # your basic auth password
+   ```
+
+
 
 4. Run locally:
 
@@ -111,7 +123,7 @@ These scripts should be executed from root of the project folder. Your environme
     heroku local
     ```
 
-3. Configure environment variables. Set up an environment variable for every property on config.json. See Heroku documentation on [Configuration and Config Vars](https://devcenter.heroku.com/articles/config-vars).
+3. Configure environment variables for each  See Heroku documentation on [Configuration and Config Vars](https://devcenter.heroku.com/articles/config-vars).
 
 4. Deploy to Heroku.
 
