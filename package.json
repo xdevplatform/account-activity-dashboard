@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Sample web app and helper scripts to get started with Twitter's Account Activity API",
   "engines": {
-    "node": "5.9.1"
+    "node": "10.x",
+    "yarn": "~1"
   },
   "main": "index.js",
   "scripts": {
