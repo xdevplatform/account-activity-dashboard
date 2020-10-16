@@ -1,3 +1,4 @@
+const nconf = require('nconf')
 const express = require('express')
 const bodyParser = require('body-parser')
 const session = require('express-session')
@@ -10,6 +11,9 @@ const cacheRoute = require('./helpers/cache-route')
 const socket = require('./helpers/socket')
 
 const app = express()
+
+// load config
+nconf.file({ file: 'config.json' }).env()
 
 app.set('port', (process.env.PORT || 5000))
 app.set('views', __dirname + '/views')
@@ -64,7 +68,7 @@ app.get('/webhook/twitter', function(request, response) {
 app.post('/webhook/twitter', function(request, response) {
 
   console.log(request.body)
-  
+
   socket.io.emit(socket.activity_event, {
     internal_id: uuid(),
     event: request.body
@@ -95,14 +99,14 @@ app.get('/subscriptions', auth.basic, cacheRoute(1000), require('./routes/subscr
  * Starts Twitter sign-in process for adding a user subscription
  **/
 app.get('/subscriptions/add', passport.authenticate('twitter', {
-  callbackURL: '/callbacks/addsub'
+  callbackURL: `${nconf.get('BASE_CALLBACK_URL')}/callbacks/addsub`
 }));
 
 /**
  * Starts Twitter sign-in process for removing a user subscription
  **/
 app.get('/subscriptions/remove', passport.authenticate('twitter', {
-  callbackURL: '/callbacks/removesub'
+  callbackURL: `${nconf.get('BASE_CALLBACK_URL')}/callbacks/removesub`
 }));
 
 
