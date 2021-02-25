@@ -68,6 +68,8 @@ For the enterprise tier of the Account Activity API, please check out the [Enter
     ```text
     http(s)://your.app.domain/callbacks/addsub
     http(s)://your.app.domain/callbacks/removesub
+    https://chirp-tw-webhook-manager.herokuapp.com/callbacks/addsub
+    https://chirp-tw-webhook-manager.herokuapp.com/callbacks/removesub
     ```
 
 ## Configure webhook to receive events

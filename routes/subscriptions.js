@@ -72,8 +72,8 @@ module.exports = function (req, response) {
       }
     }
 
-    resp.status(500);
-    resp.render('status', json_response)
+    response.status(500);
+    response.render('status', json_response)
   })
 
 }
