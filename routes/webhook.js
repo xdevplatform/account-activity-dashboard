@@ -14,6 +14,9 @@ webhook.get_config = function (req, resp) {
     url: 'https://api.twitter.com/1.1/account_activity/all/' + auth.twitter_webhook_environment + '/webhooks.json',
     oauth: auth.twitter_oauth
   }
+  
+  console.log("✅ Getting webhook config params");
+  console.log(request_options);
 
   request.get(request_options)
 

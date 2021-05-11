@@ -14,14 +14,16 @@ var actions = {}
 actions.addsub = function (user) {
   sub_request_options.oauth.token = user.access_token
   sub_request_options.oauth.token_secret = user.access_token_secret
-  
+  console.log("✅ Add Sub Final Parameters");
+  console.log(sub_request_options);
   return request.post(sub_request_options)
 }
 
 actions.removesub = function (user) {
   sub_request_options.oauth.token = user.access_token
   sub_request_options.oauth.token_secret = user.access_token_secret
-
+  console.log("✅ Add Remove Final Parameters");
+  console.log(sub_request_options);
   return request.delete(sub_request_options)
 }
 
@@ -57,7 +59,7 @@ module.exports = function (req, resp) {
   } else {
     var json_response = {
       title: 'Error',
-      message: 'Action "' + req.params.action +  '"" not defined.',
+      message: 'Action "' + req.params.action + '"" not defined.',
       button: {
         title: 'Ok',
         url: '/subscriptions'
@@ -67,4 +69,3 @@ module.exports = function (req, resp) {
     resp.render('status', json_response)
   }
 }
-
